@@ -16,15 +16,22 @@ window.onload = function() {
 }
 
 class Cell {
-    constructor(x, y, color) {
+    constructor(x, y) {
         this.x = x;
         this.y = y;
-        this.color = color;
+        this.isAlive = false;
         this.width = cellSide;
         this.height = cellSide;
     }
 
     draw() {
+        if(this.isAlive){
+            this.color = 'white';
+        }
+        else {
+            this.color = 'black'
+        }
+
         colorRect(this.x, this.y, this.width - 1, this.height - 1, this.color);
     }
 }
@@ -39,9 +46,14 @@ function gridSetup() {
             grid[i][j] = new Cell(j*cellSide, i*cellSide, 'black');
         }
     }
+
+    drawGlider(30,30);
 }
 
 function drawCells() {
+    // Drawing the background
+    colorRect(0, 0, canvas.width, canvas.height, 'green');
+
     for(var i = 0; i <= 59; i++){
         for(var j = 0; j<=59; j++) {
             grid[i][j].draw();
@@ -51,6 +63,14 @@ function drawCells() {
 
 function calculateCells () {
 
+}
+
+function drawGlider(i, j) {
+    grid[i][j].isAlive = true;
+    grid[i][j+1].isAlive = true;
+    grid[i][j+2].isAlive = true;
+    grid[i+1][j+2].isAlive = true;
+    grid[i+2][j+1].isAlive = true;
 }
 
 function colorRect(x, y, width, height, color) {
