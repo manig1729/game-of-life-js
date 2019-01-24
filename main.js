@@ -9,7 +9,7 @@ window.onload = function() {
 
     gridSetup();
 
-    var framesPerSecond = 11;
+    var framesPerSecond = 50;
     setInterval(function(){
         drawCells();
         calculateCells();
@@ -49,6 +49,7 @@ function gridSetup() {
     }
 
     drawGlider(54,3);
+    drawRandom();
 
     for(var i = 0; i<=59; i++){
         gridCopy[i] = [];
@@ -118,6 +119,14 @@ function drawGlider(i, j) {
     grid[i][j+2].isAlive = 1;
     grid[i+1][j+2].isAlive = 1;
     grid[i+2][j+1].isAlive = 1;
+}
+
+function drawRandom() {
+    for(i=25; i<=35; i++){
+        for(j=25; j<=35; j++){
+            grid[i][j].isAlive = Math.floor(Math.random()*1.99);
+        }
+    }
 }
 
 function colorRect(x, y, width, height, color) {
