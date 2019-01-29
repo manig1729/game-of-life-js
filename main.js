@@ -104,7 +104,6 @@ function calculateCells () {
                     }   
                     else if(gridCopy[i][j] == 0){
                     if(sum == 3){
-                    //console.log("hi");
                     grid[i][j].isAlive = 1;}
                     }
                 }
