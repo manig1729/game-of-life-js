@@ -3,17 +3,17 @@ var cellSide = 10;
 var grid = [];
 var gridCopy = [];
 
-window.onload = function() {
+window.onload = function () {
     canvas = document.getElementById('gameCanvas');
     canvasContext = canvas.getContext('2d');
 
     gridSetup();
 
     var framesPerSecond = 50;
-    setInterval(function(){
+    setInterval(function () {
         drawCells();
         calculateCells();
-    }, 1000/framesPerSecond);
+    }, 1000 / framesPerSecond);
 }
 
 class Cell {
@@ -26,7 +26,7 @@ class Cell {
     }
 
     draw() {
-        if(this.isAlive == 1){
+        if (this.isAlive == 1) {
             this.color = 'white';
         }
         else {
@@ -38,29 +38,29 @@ class Cell {
 }
 
 function gridSetup() {
-    for(var i = 0; i<=59; i++){
+    for (var i = 0; i <= 59; i++) {
         grid[i] = [];
     }
 
-    for(i = 0; i <= 59; i++){
-        for(var j = 0; j<=59; j++) {
-            grid[i][j] = new Cell(j*cellSide, i*cellSide, 'black');
+    for (i = 0; i <= 59; i++) {
+        for (var j = 0; j <= 59; j++) {
+            grid[i][j] = new Cell(j * cellSide, i * cellSide, 'black');
         }
     }
 
-    drawGlider(54,3);
+    drawGlider(54, 3);
     drawRandom();
 
-    for(var i = 0; i<=59; i++){
+    for (var i = 0; i <= 59; i++) {
         gridCopy[i] = [];
     }
 
-    for(i = 0; i <= 59; i++){
-        for(var j = 0; j<=59; j++) {
-            if(grid[i][j].isAlive == 0){
+    for (i = 0; i <= 59; i++) {
+        for (var j = 0; j <= 59; j++) {
+            if (grid[i][j].isAlive == 0) {
                 gridCopy[i][j] = 0;
             }
-            else if(grid[i][j].isAlive == 1){
+            else if (grid[i][j].isAlive == 1) {
                 gridCopy[i][j] = 1;
             }
         }
@@ -71,40 +71,41 @@ function drawCells() {
     // Drawing the background
     colorRect(0, 0, canvas.width, canvas.height, 'green');
 
-    for(var i = 0; i <= 59; i++){
-        for(var j = 0; j<=59; j++) {
+    for (var i = 0; i <= 59; i++) {
+        for (var j = 0; j <= 59; j++) {
             grid[i][j].draw();
         }
     }
 }
 
-function calculateCells () {
-    for(i = 0; i <= 59; i++){
-        for(var j = 0; j<=59; j++) {
-            if(grid[i][j].isAlive == 0){
+function calculateCells() {
+    for (i = 0; i <= 59; i++) {
+        for (var j = 0; j <= 59; j++) {
+            if (grid[i][j].isAlive == 0) {
                 gridCopy[i][j] = 0;
             }
-            else if(grid[i][j].isAlive == 1){
+            else if (grid[i][j].isAlive == 1) {
                 gridCopy[i][j] = 1;
             }
         }
     }
 
-    for(var i = 0; i <= 59; i++){
-        for(var j = 0; j<=59; j++) {
-            if(i > 1 && j > 1){
-                if(i < 57 && j < 57){
+    for (var i = 0; i <= 59; i++) {
+        for (var j = 0; j <= 59; j++) {
+            if (i > 1 && j > 1) {
+                if (i < 57 && j < 57) {
                     var sum = 0;
-                    sum = gridCopy[i-1][j-1] + gridCopy[i-1][j] + gridCopy[i-1][j+1] + gridCopy[i][j-1] + gridCopy[i][j+1] + gridCopy[i+1][j-1] + gridCopy[i+1][j] + gridCopy[i+1][j+1];
-                    if(gridCopy[i][j] == 1){
-                        if(sum <= 1 || sum >= 4)
-                        grid[i][j].isAlive = 0;
+                    sum = gridCopy[i - 1][j - 1] + gridCopy[i - 1][j] + gridCopy[i - 1][j + 1] + gridCopy[i][j - 1] + gridCopy[i][j + 1] + gridCopy[i + 1][j - 1] + gridCopy[i + 1][j] + gridCopy[i + 1][j + 1];
+                    if (gridCopy[i][j] == 1) {
+                        if (sum <= 1 || sum >= 4)
+                            grid[i][j].isAlive = 0;
                         else
-                        grid[i][j].isAlive = 1;
-                    }   
-                    else if(gridCopy[i][j] == 0){
-                    if(sum == 3){
-                    grid[i][j].isAlive = 1;}
+                            grid[i][j].isAlive = 1;
+                    }
+                    else if (gridCopy[i][j] == 0) {
+                        if (sum == 3) {
+                            grid[i][j].isAlive = 1;
+                        }
                     }
                 }
             }
@@ -114,16 +115,16 @@ function calculateCells () {
 
 function drawGlider(i, j) {
     grid[i][j].isAlive = 1;
-    grid[i][j+1].isAlive = 1;
-    grid[i][j+2].isAlive = 1;
-    grid[i+1][j+2].isAlive = 1;
-    grid[i+2][j+1].isAlive = 1;
+    grid[i][j + 1].isAlive = 1;
+    grid[i][j + 2].isAlive = 1;
+    grid[i + 1][j + 2].isAlive = 1;
+    grid[i + 2][j + 1].isAlive = 1;
 }
 
 function drawRandom() {
-    for(i=25; i<=35; i++){
-        for(j=25; j<=35; j++){
-            grid[i][j].isAlive = Math.floor(Math.random()*1.99);
+    for (i = 25; i <= 35; i++) {
+        for (j = 25; j <= 35; j++) {
+            grid[i][j].isAlive = Math.floor(Math.random() * 1.99);
         }
     }
 }
