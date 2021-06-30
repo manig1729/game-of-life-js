@@ -2,6 +2,8 @@
 
 My take on coding John Conway's Game of life, the cellular automaton.
 
+Watch it in action here on [GitHub pages](https://manig1729.github.io/game-of-life-js/)
+
 ### To know more about the Game of life, check out these links : 
 * [Game of life Wikipedia](https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life)
 * [Explanation by John Conway](https://www.youtube.com/watch?v=E8kUJL04ELA)
