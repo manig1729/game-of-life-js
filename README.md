@@ -3,8 +3,8 @@
 My take on coding John Conway's Game of life, the cellular automaton.
 
 ### To know more about the Game of life, check out these links : 
-* https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life
-* https://www.youtube.com/watch?v=E8kUJL04ELA
+* [Game of life Wikipedia](https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life)
+* [Explanation by John Conway](https://www.youtube.com/watch?v=E8kUJL04ELA)
 
 It is quite a simple _game_ to code, but can do much more than what one expects.
 
