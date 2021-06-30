@@ -9,7 +9,7 @@ window.onload = function () {
 
     gridSetup();
 
-    var framesPerSecond = 50;
+    var framesPerSecond = 20;
     setInterval(function () {
         drawCells();
         calculateCells();
