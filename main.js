@@ -68,7 +68,7 @@ function gridSetup() {
 }
 
 function drawCells() {
-    // Drawing the background
+    // Draw the background
     colorRect(0, 0, canvas.width, canvas.height, 'green');
 
     for (var i = 0; i <= 59; i++) {
