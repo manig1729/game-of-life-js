@@ -3,7 +3,7 @@ var cellSide = 10;
 var grid = [];
 var gridCopy = [];
 
-// GLOBAL VARIABLES
+// GLOBAL VARIABLES height and width
 var HEIGHT = 60;
 var WIDTH = 60;
 
