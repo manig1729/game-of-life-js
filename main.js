@@ -36,7 +36,7 @@ class Cell {
         colorRect(this.x, this.y, this.width - 1, this.height - 1, this.color);
     }
 }
-
+// Set up the grid
 function gridSetup() {
     for (var i = 0; i <= 59; i++) {
         grid[i] = [];
