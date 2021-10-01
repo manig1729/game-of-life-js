@@ -4,12 +4,14 @@ var grid = [];
 var gridCopy = [];
 
 // GLOBAL VARIABLES
-var HEIGHT = 60;
-var WIDTH = 60;
+var HEIGHT = window.innerHeight/10;
+var WIDTH = window.innerWidth/10;
 
 window.onload = function () {
     canvas = document.getElementById('gameCanvas');
     canvasContext = canvas.getContext('2d');
+    canvas.height = window.innerHeight; 
+    canvas.width = window.innerWidth;
 
     gridSetup();
 
