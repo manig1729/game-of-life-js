@@ -3,6 +3,10 @@ var cellSide = 10;
 var grid = [];
 var gridCopy = [];
 
+// GLOBAL VARIABLES
+var HEIGHT = 60;
+var WIDTH = 60;
+
 window.onload = function () {
     canvas = document.getElementById('gameCanvas');
     canvasContext = canvas.getContext('2d');
@@ -38,12 +42,12 @@ class Cell {
 }
 
 function gridSetup() {
-    for (var i = 0; i <= 59; i++) {
+    for (var i = 0; i <= HEIGHT - 1; i++) {
         grid[i] = [];
     }
 
-    for (i = 0; i <= 59; i++) {
-        for (var j = 0; j <= 59; j++) {
+    for (i = 0; i <= HEIGHT - 1; i++) {
+        for (var j = 0; j <= WIDTH - 1; j++) {
             grid[i][j] = new Cell(j * cellSide, i * cellSide, 'black');
         }
     }
@@ -51,12 +55,12 @@ function gridSetup() {
     drawGlider(54, 3);
     drawRandom();
 
-    for (var i = 0; i <= 59; i++) {
+    for (var i = 0; i <= HEIGHT - 1; i++) {
         gridCopy[i] = [];
     }
 
-    for (i = 0; i <= 59; i++) {
-        for (var j = 0; j <= 59; j++) {
+    for (i = 0; i <= HEIGHT - 1; i++) {
+        for (var j = 0; j <= WIDTH - 1; j++) {
             if (grid[i][j].isAlive == 0) {
                 gridCopy[i][j] = 0;
             }
@@ -71,16 +75,16 @@ function drawCells() {
     // Draw the background
     colorRect(0, 0, canvas.width, canvas.height, 'green');
 
-    for (var i = 0; i <= 59; i++) {
-        for (var j = 0; j <= 59; j++) {
+    for (var i = 0; i <= HEIGHT - 1; i++) {
+        for (var j = 0; j <= WIDTH - 1; j++) {
             grid[i][j].draw();
         }
     }
 }
 
 function calculateCells() {
-    for (i = 0; i <= 59; i++) {
-        for (var j = 0; j <= 59; j++) {
+    for (i = 0; i <= HEIGHT - 1; i++) {
+        for (var j = 0; j <= WIDTH - 1; j++) {
             if (grid[i][j].isAlive == 0) {
                 gridCopy[i][j] = 0;
             }
@@ -90,10 +94,10 @@ function calculateCells() {
         }
     }
 
-    for (var i = 0; i <= 59; i++) {
-        for (var j = 0; j <= 59; j++) {
+    for (var i = 0; i <= HEIGHT - 1; i++) {
+        for (var j = 0; j <= WIDTH - 1; j++) {
             if (i > 1 && j > 1) {
-                if (i < 57 && j < 57) {
+                if (i < HEIGHT - 3 && j < WIDTH - 3) {
                     var sum = 0;
                     sum = gridCopy[i - 1][j - 1] + gridCopy[i - 1][j] + gridCopy[i - 1][j + 1] + gridCopy[i][j - 1] + gridCopy[i][j + 1] + gridCopy[i + 1][j - 1] + gridCopy[i + 1][j] + gridCopy[i + 1][j + 1];
                     if (gridCopy[i][j] == 1) {
