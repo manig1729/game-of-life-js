@@ -2,26 +2,49 @@
 var cellSide = 10;
 var grid = [];
 var gridCopy = [];
-
+var paused = true;
 
 // GLOBAL VARIABLES HEIGHT AND WIDTH
-var HEIGHT = window.innerHeight/10;
-var WIDTH = window.innerWidth/10;
+var HEIGHT = 60;
+var WIDTH = 80;
 
+function togglePause()
+{
+    if (!paused)
+    {
+        paused = true;
+    } else if (paused)
+    {
+       paused= false;
+    }
+
+}
+
+window.addEventListener('keydown', function (e) {
+    var key = e.key;
+    if (key === ' ')// space key
+    {
+        togglePause();
+    }
+    });
 
 window.onload = function () {
     canvas = document.getElementById('gameCanvas');
     canvasContext = canvas.getContext('2d');
   //sets canvas width
+  /*
     canvas.height = window.innerHeight; 
     canvas.width = window.innerWidth;
-
+*/
     gridSetup();
 
     var framesPerSecond = 20;
+    drawCells();
     setInterval(function () {
-        drawCells();
-        calculateCells();
+        if (!paused) {
+            drawCells();
+            calculateCells();
+        }
     }, 1000 / framesPerSecond);
 }
 
