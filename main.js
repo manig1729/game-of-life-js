@@ -5,9 +5,10 @@ var gridCopy = [];
 var paused = true;
 
 // GLOBAL VARIABLES HEIGHT AND WIDTH
-
-var HEIGHT = window.innerHeight/10;
-var WIDTH = window.innerWidth/10;
+var HEIGHT = 60;
+var WIDTH = 60;
+//var HEIGHT = window.innerHeight/10;
+//var WIDTH = window.innerWidth/10;
 var canvas = document.getElementById('gameCanvas');
 
 function togglePause()
