@@ -3,13 +3,18 @@ var cellSide = 10;
 var grid = [];
 var gridCopy = [];
 
-// GLOBAL VARIABLES height and width
-var HEIGHT = 60;
-var WIDTH = 60;
+
+// GLOBAL VARIABLES HEIGHT AND WIDTH
+var HEIGHT = window.innerHeight/10;
+var WIDTH = window.innerWidth/10;
+
 
 window.onload = function () {
     canvas = document.getElementById('gameCanvas');
     canvasContext = canvas.getContext('2d');
+  //sets canvas width
+    canvas.height = window.innerHeight; 
+    canvas.width = window.innerWidth;
 
     gridSetup();
 
