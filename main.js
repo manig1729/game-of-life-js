@@ -6,7 +6,7 @@ var paused = true;
 
 // GLOBAL VARIABLES HEIGHT AND WIDTH
 var HEIGHT = 60;
-var WIDTH = 60;
+var WIDTH = 80;
 //var HEIGHT = window.innerHeight/10;
 //var WIDTH = window.innerWidth/10;
 var canvas = document.getElementById('gameCanvas');
