@@ -1,5 +1,10 @@
 <!DOCTYPE html>
 <html>
+<head>
+    <title>
+        Game of Life
+    </title>
+</head>
 <style>
     #gameCanvas{
         position: absolute;
@@ -7,7 +12,31 @@
         left:50%;
         transform: translate(-50%,-50%);
     }
+    .container {
+        height: 200px;
+        position: relative;
+        border: 3px solid green;
+    }
+
+    .horizontal-center {
+        position: absolute;
+        left: 50%;
+        -ms-transform: translateX(-50%);
+        transform: translateX(-50%);
+    }
 </style>
+
+<body>
+    <h3 align=center> Conway's Game of Life </h3>
+    <div class=container">
+        <div class="horizontal-center">
+            <button onclick="togglePause()">Pause/play</button>
+            <!----
+                <button onclick="drawCellMouse()"> Draw </button>
+                ----->
+        </div>
+    </div>
+</body>
 <canvas id='gameCanvas' width='600' height='600'></canvas>
 <script src='main.js'></script>
 

@@ -2,13 +2,32 @@
 var cellSide = 10;
 var grid = [];
 var gridCopy = [];
-
+var paused = true;
 
 // GLOBAL VARIABLES HEIGHT AND WIDTH
+
 var HEIGHT = window.innerHeight/10;
 var WIDTH = window.innerWidth/10;
 var canvas = document.getElementById('gameCanvas');
 
+function togglePause()
+{
+    if (!paused)
+    {
+        paused = true;
+    } else if (paused)
+    {
+       paused= false;
+    }
+}
+
+window.addEventListener('keydown', function (e) {
+    var key = e.key;
+    if (key === ' ')// space key
+    {
+        togglePause();
+    }
+    });
 
 //Gets mouse position and makes cell alive if mouse button is down
 canvas.addEventListener("mousemove", cursor => {
@@ -21,16 +40,21 @@ canvas.addEventListener("mousemove", cursor => {
 
 window.onload = function () {
     canvasContext = canvas.getContext('2d');
+
     //sets canvas width
+    /*
     canvas.height = window.innerHeight; 
     canvas.width = window.innerWidth;
-
+    */
     gridSetup();
 
     var framesPerSecond = 20;
+    drawCells();
     setInterval(function () {
-        drawCells();
-        calculateCells();
+        if (!paused) {
+            drawCells();
+            calculateCells();
+        }
     }, 1000 / framesPerSecond);
 }
 
@@ -85,6 +109,7 @@ function gridSetup() {
     }
 }
 
+// function to draw cells and background
 function drawCells() {
     // Draw the background
     colorRect(0, 0, canvas.width, canvas.height, 'green');
