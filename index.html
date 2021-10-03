@@ -13,24 +13,26 @@
         transform: translate(-50%,-50%);
     }
     .container {
-        height: 200px;
+        width: max-content;
+        padding:10px;
         position: absolute;
-        border: 3px solid green;
-    }
-
-    .horizontal-center {
-        position: relative;
-        left: 50%;
-        -ms-transform: translateX(-50%);
+        left:50%;
         transform: translateX(-50%);
+        z-index: 100;
+        text-transform: capitalize;
+
+        text-align: center;
+        
+        border: 3px solid green;
+        background-color: white;
     }
 </style>
 
 <body>
-    <h3 align=center> Conway's Game of Life </h3>
-    <div class=container">
-        <div class="horizontal-center">
+    <div class="container">
+        <h3> Conway's Game of Life </h3>
             <button onclick="togglePause()">Pause/play</button>
+            <button onclick="fullscreen()">Fullscreen</button>
             <!----
                 <button onclick="drawCellMouse()"> Draw </button>
                 ----->
