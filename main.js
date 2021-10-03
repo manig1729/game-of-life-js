@@ -5,10 +5,10 @@ var gridCopy = [];
 var paused = true;
 
 // GLOBAL VARIABLES HEIGHT AND WIDTH
-var HEIGHT = 60;
-var WIDTH = 80;
-//var HEIGHT = window.innerHeight/10;
-//var WIDTH = window.innerWidth/10;
+// var HEIGHT = 60;
+// var WIDTH = 80;
+var HEIGHT = window.innerHeight/10;
+var WIDTH = window.innerWidth/10;
 var canvas = document.getElementById('gameCanvas');
 
 function togglePause()
@@ -18,7 +18,7 @@ function togglePause()
         paused = true;
     } else if (paused)
     {
-       paused= false;
+       paused = false;
     }
 }
 
@@ -30,7 +30,6 @@ window.addEventListener('keydown', function (e) {
     }
     });
 
-//Gets mouse position and makes cell alive if mouse button is down
 canvas.addEventListener("mousemove", cursor => {
     if (cursor.buttons == 1){
         newLifeX = Math.floor(cursor.clientX/10);
@@ -39,14 +38,26 @@ canvas.addEventListener("mousemove", cursor => {
     }
 });
 
+canvas.addEventListener("click", cursor => {
+        newLifeX = Math.floor(cursor.clientX/10);
+        newLifeY = Math.floor(cursor.clientY/10);
+
+        if (grid[newLifeY][newLifeX].isAlive == 1) {
+            grid[newLifeY][newLifeX].isAlive = 0;
+        }
+        else {
+            grid[newLifeY][newLifeX].isAlive = 1;
+        }
+});
+
 window.onload = function () {
     canvasContext = canvas.getContext('2d');
 
     //sets canvas width
-    /*
+    
     canvas.height = window.innerHeight; 
     canvas.width = window.innerWidth;
-    */
+    
     gridSetup();
 
     var framesPerSecond = 20;
@@ -55,6 +66,9 @@ window.onload = function () {
         if (!paused) {
             drawCells();
             calculateCells();
+        }
+        else if (paused) {
+            drawCells();
         }
     }, 1000 / framesPerSecond);
 }
