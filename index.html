@@ -26,6 +26,19 @@
         border: 3px solid green;
         background-color: white;
     }
+    .instructions {
+        width: max-content;
+        padding: 10px;
+        position: absolute;
+        top: 40%;
+        right: 10%;
+        z-index: 100;
+        text-transform: capitalize;
+        text-align: center;
+
+        border: 3px solid green;
+        background-color: white;
+    }
 </style>
 
 <body>
@@ -33,10 +46,17 @@
         <h3> Conway's Game of Life </h3>
             <button onclick="togglePause()">Pause/play</button>
             <button onclick="fullscreen()">Fullscreen</button>
+            <button onclick="clearscr()">Clear</button>
             <!----
                 <button onclick="drawCellMouse()"> Draw </button>
                 ----->
-        </div>
+    </div>
+    <div class="instructions">
+        <h4> Instructions</h4>
+            <ul>
+                <li>Press space to pause / unpause</li>
+                <li>Click / drag mouse to draw cells</li>
+            </ul>
     </div>
 </body>
 <canvas id='gameCanvas' width='600' height='600'></canvas>

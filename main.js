@@ -35,6 +35,16 @@ function fullscreen(){
     }
     gridSetup();
 }
+
+function clearscr() {
+    for (i = 0; i <= HEIGHT - 1; i++) {
+        for (var j = 0; j <= WIDTH - 1; j++) {
+            grid[i][j].isAlive = 0;
+        }
+    }
+    drawCells();
+}
+
 window.addEventListener('keydown', function (e) {
     var key = e.key;
     if (key === ' ')// space key
