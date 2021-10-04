@@ -136,8 +136,8 @@ function gridSetup() {
         }
     }
 
-    drawGlider(54, 3);
-    drawRandom();
+    //drawGlider(54, 3);
+    //drawRandom();
 
     for (var i = 0; i <= HEIGHT - 1; i++) {
         gridCopy[i] = [];
@@ -211,8 +211,8 @@ function drawGlider(i, j) {
 }
 
 function drawRandom() {
-    for (i = 25; i <= 35; i++) {
-        for (j = 25; j <= 35; j++) {
+    for (i = 15; i <= 35; i++) {
+        for (j = 15; j <= 35; j++) {
             grid[i][j].isAlive = Math.floor(Math.random() * 1.99);
         }
     }
