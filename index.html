@@ -39,6 +39,22 @@
         border: 3px solid green;
         background-color: white;
     }
+    .credits {
+        width: max-content;
+        padding: 10px;
+        position: absolute;
+        bottom: 3%;
+        left: 50%;
+        z-index: 100;
+        text-transform: capitalize;
+        text-align: center;
+        transform: translateX(-50%);
+
+        border: 3px solid green;
+        background-color: white;
+
+        font-size: 15px;
+    }
 </style>
 
 <body>
@@ -58,6 +74,17 @@
                 <li>Press space to pause / unpause</li>
                 <li>Click / drag mouse to draw cells</li>
             </ul>
+    </div>
+    <div class="credits">
+        <a href="https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life">Conway's Game of Life</a>
+        <br>
+        <a href="https://github.com/manig1729/game-of-life-js#readme">About our implementation</a>
+        <br>
+        Contributors : 
+        <a href="https://github.com/manig1729">Mani</a>
+        <a href="https://github.com/NeoIsRecursive">Neo</a>
+        <a href="https://github.com/Prashanthsrn">Prashanth</a>
+        <a href="https://github.com/p0wp0wpanda">Atharva</a>
     </div>
 </body>
 <canvas id='gameCanvas' width='600' height='600'></canvas>
