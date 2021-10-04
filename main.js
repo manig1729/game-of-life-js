@@ -5,10 +5,9 @@ var gridCopy = [];
 var paused = true;
 
 // GLOBAL VARIABLES HEIGHT AND WIDTH
-// var HEIGHT = 60;
-// var WIDTH = 80;
-var HEIGHT = window.innerHeight/10;
-var WIDTH = window.innerWidth/10;
+var HEIGHT = 60;
+var WIDTH = 80;
+
 var canvas = document.getElementById('gameCanvas');
 
 function togglePause()
@@ -21,7 +20,21 @@ function togglePause()
        paused = false;
     }
 }
-
+//sets height and width then sets up the grid with new size. resets current grid.
+function fullscreen(){
+    if (WIDTH == 80) {
+        canvas.height = window.innerHeight; 
+        canvas.width = window.innerWidth;
+        HEIGHT = window.innerHeight/10;
+        WIDTH = window.innerWidth/10;
+    } else {
+        canvas.height = 600;
+        canvas.width = 600;
+        HEIGHT = 60;
+        WIDTH = 80;
+    }
+    gridSetup();
+}
 window.addEventListener('keydown', function (e) {
     var key = e.key;
     if (key === ' ')// space key
@@ -30,17 +43,28 @@ window.addEventListener('keydown', function (e) {
     }
     });
 
+//calculates cursorpoint - length to element
+function getCursorInCanvas(point){
+    var rect = point.target.getBoundingClientRect();
+    newLifeX = Math.floor((point.clientX-rect.left)/cellSide);
+    newLifeY = Math.floor((point.clientY-rect.top)/cellSide);
+    return [newLifeY,newLifeX];
+}
+
+    
 canvas.addEventListener("mousemove", cursor => {
     if (cursor.buttons == 1){
-        newLifeX = Math.floor(cursor.clientX/10);
-        newLifeY = Math.floor(cursor.clientY/10);
+        points = getCursorInCanvas(cursor);
+        newLifeY = points[0];
+        newLifeX = points[1];
         grid[newLifeY][newLifeX].isAlive = 1;
     }
 });
 
 canvas.addEventListener("click", cursor => {
-        newLifeX = Math.floor(cursor.clientX/10);
-        newLifeY = Math.floor(cursor.clientY/10);
+        points = getCursorInCanvas(cursor)
+        newLifeY = points[0];
+        newLifeX = points[1];
 
         if (grid[newLifeY][newLifeX].isAlive == 1) {
             grid[newLifeY][newLifeX].isAlive = 0;
@@ -54,9 +78,6 @@ window.onload = function () {
     canvasContext = canvas.getContext('2d');
 
     //sets canvas width
-    
-    canvas.height = window.innerHeight; 
-    canvas.width = window.innerWidth;
     
     gridSetup();
 
