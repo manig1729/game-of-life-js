@@ -16,6 +16,7 @@ Check out the [website](https://manig1729.github.io/game-of-life-js/) where this
 
 ## Rules
 The rules of the Game of Life are pretty straightforward
+
 In each 'tick' or 'frame', the game checks which cells are 'alive' and calculates the next generation of cells based on these rules :
 - If a live cell has less than 2 alive neighbors, it will die
 - If a live cell has 2 or 3 alive neighbors, it will continue to live
@@ -41,6 +42,7 @@ Ours is a simple implementation of the game, including these features
 
 ## Contributing to the project
 All contributions which make the project better are welcome
+
 A few features which might be worth implementing are
 * Touch screen functionality to create alive cells
 * Inserting specific patterns (like gliders or glider guns) directly
