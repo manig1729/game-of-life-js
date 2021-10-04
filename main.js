@@ -84,6 +84,8 @@ canvas.addEventListener("click", cursor => {
         }
 });
 
+// TODO - have to implement touch functionality
+/*
 canvas.addEventListener("touchend", cursor => {
     event.preventDefault;
     points = getCursorInCanvas(cursor)
@@ -97,6 +99,7 @@ canvas.addEventListener("touchend", cursor => {
         grid[newLifeY][newLifeX].isAlive = 1;
     }
 });
+*/
 
 window.onload = function () {
     canvasContext = canvas.getContext('2d');
