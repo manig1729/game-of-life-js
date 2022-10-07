@@ -72,16 +72,28 @@ canvas.addEventListener("mousemove", cursor => {
 });
 
 canvas.addEventListener("click", cursor => {
+        drawSelector = document.getElementById('draw');
+        drawMode = drawSelector.value;
         points = getCursorInCanvas(cursor)
         newLifeY = points[0];
         newLifeX = points[1];
 
-        if (grid[newLifeY][newLifeX].isAlive == 1) {
-            grid[newLifeY][newLifeX].isAlive = 0;
-        }
-        else {
-            grid[newLifeY][newLifeX].isAlive = 1;
-        }
+        switch (drawMode) {
+            case 'Dot':
+                if (grid[newLifeY][newLifeX].isAlive == 1) {
+                    grid[newLifeY][newLifeX].isAlive = 0;
+                }
+                else {
+                    grid[newLifeY][newLifeX].isAlive = 1;
+                }
+                break;
+            case 'Glider':
+                drawGlider(newLifeY, newLifeX);
+                break;
+            case 'LWSS':
+                drawLightweightSpaceship(newLifeY, newLifeX);
+                break;
+        }        
 });
 
 // TODO - have to implement touch functionality
@@ -218,11 +230,23 @@ function calculateCells() {
 }
 
 function drawGlider(i, j) {
-    grid[i][j].isAlive = 1;
-    grid[i][j + 1].isAlive = 1;
+    grid[i + 1][j].isAlive = 1;
+    grid[i + 2][j + 1].isAlive = 1;
     grid[i][j + 2].isAlive = 1;
     grid[i + 1][j + 2].isAlive = 1;
-    grid[i + 2][j + 1].isAlive = 1;
+    grid[i + 2][j + 2].isAlive = 1;
+}
+
+function drawLightweightSpaceship(i, j) {
+    grid[i + 1][j].isAlive = 1;
+    grid[i + 2][j].isAlive = 1;
+    grid[i + 3][j].isAlive = 1;
+    grid[i + 4][j].isAlive = 1;
+    grid[i + 4][j + 1].isAlive = 1;
+    grid[i + 4][j + 2].isAlive = 1;
+    grid[i + 3][j + 3].isAlive = 1;
+    grid[i][j + 1].isAlive = 1;
+    grid[i][j + 3].isAlive = 1;
 }
 
 function drawRandom() {
