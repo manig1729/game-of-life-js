@@ -250,9 +250,16 @@ function drawLightweightSpaceship(i, j) {
 }
 
 function drawRandom() {
-    for (i = 15; i <= 35; i++) {
-        for (j = 15; j <= 35; j++) {
-            grid[i][j].isAlive = Math.floor(Math.random() * 1.99);
+    // variables
+    var i_start = 0;
+    var i_end = HEIGHT - 1;
+    var j_start = 0;
+    var j_end = WIDTH - 1;
+    var randomlimit = 3.99;
+
+    for (i = i_start; i <= i_end; i++) {
+        for (j = j_start; j <= j_end; j++) {
+            grid[i][j].isAlive = Math.floor(Math.random() * randomlimit);
         }
     }
 }
