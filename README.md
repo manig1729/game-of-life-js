@@ -39,11 +39,11 @@ Ours is a simple implementation of the game, including these features
 * Ability to clear the grid at any time using the clear button
 * 'Random' button which creates a random area of fixed size with alive and dead cells
 * 'Fullscreen' mode which makes the grid take up all the available space in a window
+* Inserting specific patterns (like gliders or glider guns) directly
 
 ## Contributing to the project
 All contributions which make the project better are welcome
 
 A few features which might be worth implementing are
 * Touch screen functionality to create alive cells
-* Inserting specific patterns (like gliders or glider guns) directly
 * Adjusting the speed of the simulation or a button to go ahead one generation at a time
